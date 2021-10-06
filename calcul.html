@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<form onsubmit="check(event);" class="wrapper" method="POST" action="/">
+			<p><b>Калькулятор</b></p>
+			<table class="main"><tr class="display">
+			<td colspan="2"><input type="number" id="num1" name="num1" placeholder="Первое число"></input></td><td colspan="2">
+			<input type="number" id="num2" name="num2" placeholder="Второе число"></input></td></tr><tr class="buttons">
+			<td><button type="submit" formaction="/add"><b>+</b></button></td>
+			<td><button type="submit" formaction="/diff"><b>-</b></button></td>
+			<td><button type="submit" formaction="/prod"><b>x</b></button></td>
+			<td><button type="submit" formaction="/quot"><b>/</b></button></td></tr>
+			</table>
+			<span id='message'></span>
+		</form>
+	</body>
+	<script>
+		function check(e) {
+			document.getElementById('message').innerHTML = "Подсчет";
+			const data = {
+				'num1' : document.getElementById('num1').value,
+				'num2' : document.getElementById('num2').value
+			};
+
+			const other_params = {
+				headers : { "content-type" : "application/json; charset=UTF-8" },
+				body : data,
+				method : "POST",
+				mode : "cors"
+			};
+
+			fetch('/', other_params)
+				.then(function(response) {
+					if (!response.ok) {
+						e.preventDefault();
+						throw new Error("Could not reach the API: " + response.statusText);
+					}
+				}).catch(function(error) {
+					e.preventDefault();
+					document.getElementById("message").innerHTML = error.message;
+					
+				});
+			return true;
+		}
+	</script>
+</html>
