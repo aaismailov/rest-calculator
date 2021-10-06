@@ -14,28 +14,28 @@ app.post('/',(req, res)=>{
 });
 
 app.post('/add', (req, res) => {
-	let n1 = Number(req.body.num1);
+    let n1 = Number(req.body.num1);
     let n2 = Number(req.body.num2);
     let sum = n1 + n2;
     res.send(`${n1} + ${n2} = ${sum}`);
 })
 
 app.post('/diff', (req, res) => {
-	let n1 = Number(req.body.num1);
+    let n1 = Number(req.body.num1);
     let n2 = Number(req.body.num2);
     let diff = n1 - n2;
     res.send(`${n1} - ${n2} = ${diff}`);
 })
 
 app.post('/prod', (req, res) => {
-	let n1 = Number(req.body.num1);
+    let n1 = Number(req.body.num1);
     let n2 = Number(req.body.num2);
     let product = n1 * n2;
     res.send(`${n1} * ${n2} = ${product}`);
 })
 
 app.post('/quot', (req, res) => {
-	let n1 = Number(req.body.num1);
+    let n1 = Number(req.body.num1);
     let n2 = Number(req.body.num2);
     let quot = n1 / n2;
     res.send(`${n1} / ${n2} = ${quot}`);
